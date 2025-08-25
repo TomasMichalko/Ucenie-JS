@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <title>ToDo App</title>
+  <style>
+    body {
+      background: #1e293b;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: #0f172a;
+      padding: 20px;
+      border-radius: 12px;
+      width: 600px; /* bolo 500px → zväčšil som o 20% */
+      text-align: center;
+    }
+    h1 { margin-bottom: 15px; }
+    input {
+      padding: 8px;
+      width: 70%;
+      border: none;
+      border-radius: 6px;
+    }
+    button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+      text-align: left;
+    }
+    li {
+      padding: 10px;
+      background: #1e293b;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+      position: relative; /* dôležité pre fajku v .done */
+    }
+    /* kliknutím na úlohu sa zvýrazní modrým borderom */
+    .active {
+      transform: scale(1.05);
+      border: 2px solid #3b82f6;
+      box-shadow: 0 0 12px #3b82f6;
+    }
+    /* hotová úloha */
+    .done {
+      text-decoration: line-through; /* jemné prečiarknutie */
+      color: #94a3b8;                /* zosvetlenie textu */
+    }
+    /* fajka vpravo pre hotové úlohy */
+    .done::after {
+      content: "✔️";
+      color: #22c55e;
+      font-weight: bold;
+      position: absolute;
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📝 ToDo App</h1>
+    <input id="taskInput" type="text" placeholder="Zadaj úlohu...">
+    <button id="addBtn">Pridať</button>
+    <ul id="taskList"></ul>
+    <button id="deleteBtn">Vymazať označené</button>
+    <button id="completeBtn">Označiť ako hotové</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

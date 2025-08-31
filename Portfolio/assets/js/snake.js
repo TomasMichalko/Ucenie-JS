@@ -27,8 +27,9 @@
   }
 
   function themeColors(){
-    // Read CSS variables to keep visuals on theme
-    const s = getComputedStyle(document.documentElement);
+    // Read CSS variables from section to keep visuals on theme
+    const scope = board.closest('.snake-wrap') || document.documentElement;
+    const s = getComputedStyle(scope);
     return {
       bg: s.getPropertyValue('--surface').trim() || '#11161d',
       grid: s.getPropertyValue('--border').trim() || '#1f2733',
@@ -152,6 +153,9 @@
 
   function onKey(e){
     const k = e.key;
+    if(k==='ArrowUp' || k==='ArrowDown' || k==='ArrowLeft' || k==='ArrowRight'){
+      e.preventDefault();
+    }
     if(k==='ArrowUp' && dir.y!==1){ nextDir = {x:0,y:-1}; }
     else if(k==='ArrowDown' && dir.y!==-1){ nextDir = {x:0,y:1}; }
     else if(k==='ArrowLeft' && dir.x!==1){ nextDir = {x:-1,y:0}; }
@@ -162,6 +166,7 @@
     loadHigh();
     grid = Number(gridSel.value); stepMs = Number(speedSel.value);
     resizeCanvas(); draw();
+    // do not force hide page scroll; only prevent arrows from scrolling
     window.addEventListener('resize', () => { resizeCanvas(); draw(); });
     document.addEventListener('keydown', onKey);
     board.addEventListener('keydown', onKey);
@@ -171,4 +176,3 @@
     gridSel.addEventListener('change', () => { grid = Number(gridSel.value); resizeCanvas(); start(); });
   });
 })();
-

@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
-    <title>Tomáš Michalko – O mne</title>
-    <meta name="description" content="Osobná webová prezentácia – Tomáš Michalko. O mne, To‑Do appka a hra Had." />
+    <title>Tomáš Michalko — O mne</title>
+    <meta name="description" content="Osobná webová prezentácia — Tomáš Michalko. O mne, To‑Do appka a hry Had a Pong." />
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
@@ -18,6 +18,7 @@
           <a href="index.html" aria-current="page">O mne</a>
           <a href="todo.html">To‑Do</a>
           <a href="snake.html">Had</a>
+          <a href="pong.html">Pong</a>
         </nav>
         <button id="theme-toggle" class="toggle" type="button" aria-label="Prepnúť tému" aria-pressed="false">
           <span class="toggle-thumb" aria-hidden="true"></span>
@@ -32,8 +33,10 @@
             <h1 class="hero-title">Ahoj, som <span class="accent">Tomáš Michalko</span></h1>
             <p class="lead">Učím sa programovať weby a aplikácie. Ponúkam tvorbu jednoduchých webov a webových aplikácií.</p>
             <div class="cta">
-              <a class="btn primary" href="mailto:tomas@example.com">Kontaktuj ma</a>
+              <a class="btn primary" href="#kontakt">Kontaktuj ma</a>
               <a class="btn ghost" href="todo.html">Pozri To‑Do appku</a>
+              <a class="btn ghost" href="snake.html">Zahraj si hada</a>
+              <a class="btn ghost" href="pong.html">Zahraj si pong</a>
             </div>
           </div>
           <div class="hero-visual" aria-hidden="true">
@@ -85,14 +88,15 @@
         </div>
       </section>
 
-      <section class="section" aria-labelledby="contact-title">
+      <section class="section" aria-labelledby="contact-title" id="kontakt">
         <div class="container">
           <h2 id="contact-title">Kontakt</h2>
           <p>Napíš mi a preberieme detaily spolupráce.</p>
-          <div class="cta">
-            <a class="btn primary" href="mailto:tomas@example.com">Kontaktuj ma</a>
-            <a class="btn ghost" href="#top">Späť hore</a>
-          </div>
+          <form id="contactForm" class="task-form" aria-label="Kontaktný formulár">
+            <input id="contactEmail" name="email" type="email" placeholder="Tvoj e‑mail" aria-label="E‑mail" required />
+            <textarea id="contactMessage" name="message" placeholder="Správa" aria-label="Správa" rows="3" style="grid-column: 1 / -1; resize:vertical" required></textarea>
+            <button class="btn primary" type="submit">Odoslať</button>
+          </form>
         </div>
       </section>
     </main>
@@ -102,14 +106,15 @@
         <p>© <span id="year"></span> Tomáš Michalko</p>
         <p>
           <a href="#" aria-label="GitHub profil (otvorí sa v novej karte)" target="_blank" rel="noreferrer">GitHub</a>
-          ·
+          •
           <a href="#" aria-label="LinkedIn profil (otvorí sa v novej karte)" target="_blank" rel="noreferrer">LinkedIn</a>
         </p>
       </div>
     </footer>
 
-    <button id="backToTop" class="back-to-top" aria-label="Späť na vrch" hidden>▲</button>
+    <button id="backToTop" class="back-to-top" aria-label="Späť na vrch" hidden>↑</button>
 
     <script src="assets/js/theme.js"></script>
   </body>
   </html>
+

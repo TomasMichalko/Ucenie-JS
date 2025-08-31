@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
-    <title>Had — Tomáš Michalko</title>
-    <meta name="description" content="Klasická hra Had v HTML5 canvas s uloženým rekordom." />
+    <title>Pong — Tomáš Michalko</title>
+    <meta name="description" content="Jednoduchá hra Pong pre 1-2 hráčov (W/S a šípky)." />
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
-  <body>
+  <body class="snake-page">
     <a class="skip-link" href="#main">Preskočiť na obsah</a>
     <header class="site-header">
       <div class="container header-inner">
@@ -16,8 +16,8 @@
         <nav class="nav" aria-label="Hlavná navigácia">
           <a href="index.html">O mne</a>
           <a href="todo.html">To‑Do</a>
-          <a href="snake.html" aria-current="page">Had</a>
-          <a href="pong.html">Pong</a>
+          <a href="snake.html">Had</a>
+          <a href="pong.html" aria-current="page">Pong</a>
         </nav>
         <button id="theme-toggle" class="toggle" type="button" aria-label="Prepnúť tému" aria-pressed="false">
           <span class="toggle-thumb" aria-hidden="true"></span>
@@ -27,35 +27,32 @@
 
     <main id="main" class="snake-wrap">
       <div class="container">
-        <h1>Had</h1>
+        <h1>Pong</h1>
         <div class="panel" role="group" aria-label="Ovládanie hry">
-          <button id="newGame" class="btn primary" type="button">Nová hra</button>
-          <button id="pause" class="btn" type="button" aria-pressed="false">Pauza</button>
-          <label for="speed">Rýchlosť</label>
-          <select id="speed" aria-label="Rýchlosť">
-            <option value="140">Pomalá</option>
-            <option value="100" selected>Normálna</option>
-            <option value="70">Rýchla</option>
+          <button id="pongNew" class="btn primary" type="button">Nová hra</button>
+          <button id="pongPause" class="btn" type="button" aria-pressed="false">Pauza</button>
+          <label for="pongMode">Režim</label>
+          <select id="pongMode" aria-label="Režim">
+            <option value="1">1 hráč</option>
+            <option value="2" selected>2 hráči</option>
           </select>
-          <label for="grid">Mriežka</label>
-          <select id="grid" aria-label="Veľkosť mriežky">
-            <option value="16">16×16</option>
-            <option value="20" selected>20×20</option>
-            <option value="24">24×24</option>
+          <label for="pongSpeed">Rýchlosť</label>
+          <select id="pongSpeed" aria-label="Rýchlosť">
+            <option value="1">Pomalá</option>
+            <option value="1.4" selected>Normálna</option>
+            <option value="1.8">Rýchla</option>
           </select>
         </div>
 
         <div class="game-layout">
           <div class="canvas-wrap">
-            <canvas id="board" width="360" height="360" aria-label="Hracia plocha" tabindex="0"></canvas>
+            <canvas id="pongBoard" width="640" height="360" aria-label="Hracia plocha" tabindex="0"></canvas>
           </div>
           <aside class="game-side">
             <div class="status" aria-live="polite" aria-atomic="true">
-              Skóre: <span id="score">0</span> • Rekord: <span id="high">0</span>
+              Skóre: <span id="pongScoreL">0</span> : <span id="pongScoreR">0</span>
             </div>
-            <div class="help">
-              Ovládanie: šípky na klávesnici. Prehra pri náraze do steny alebo do seba.
-            </div>
+            <div class="help">Hráč 1: W/S • Hráč 2: ↑/↓</div>
           </aside>
         </div>
       </div>
@@ -70,7 +67,6 @@
     <button id="backToTop" class="back-to-top" aria-label="Späť na vrch" hidden>↑</button>
 
     <script src="assets/js/theme.js"></script>
-    <script src="assets/js/snake.js"></script>
+    <script src="assets/js/pong.js"></script>
   </body>
   </html>
-

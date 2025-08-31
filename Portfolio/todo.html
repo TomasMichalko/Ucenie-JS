@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
-    <title>To‑Do – Tomáš Michalko</title>
+    <title>To‑Do — Tomáš Michalko</title>
     <meta name="description" content="Jednoduchá To‑Do aplikácia s persistenciou v localStorage." />
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
@@ -17,6 +17,7 @@
           <a href="index.html">O mne</a>
           <a href="todo.html" aria-current="page">To‑Do</a>
           <a href="snake.html">Had</a>
+          <a href="pong.html">Pong</a>
         </nav>
         <button id="theme-toggle" class="toggle" type="button" aria-label="Prepnúť tému" aria-pressed="false">
           <span class="toggle-thumb" aria-hidden="true"></span>
@@ -30,24 +31,16 @@
         <form id="taskForm" class="task-form" aria-describedby="formHelp">
           <input id="title" name="title" type="text" placeholder="Názov úlohy*" aria-label="Názov úlohy" required />
           <input id="note" name="note" type="text" placeholder="Poznámka (voliteľné)" aria-label="Poznámka" />
-          <input id="due" name="due" type="datetime-local" aria-label="Splniť do" />
-          <label><input id="today" name="today" type="checkbox" /> Na dnes</label>
           <button class="btn primary" type="submit">Pridať</button>
-          <div id="formHelp" class="visually-hidden">Názov je povinný. Dátum musí byť v budúcnosti.</div>
+          <div id="formHelp" class="visually-hidden">Názov je povinný.</div>
         </form>
 
         <div class="toolbar" role="toolbar" aria-label="Filtrovanie a triedenie">
           <div class="segmented" role="group" aria-label="Filtre">
             <button type="button" data-filter="all" aria-pressed="true">Všetky</button>
-            <button type="button" data-filter="planned" aria-pressed="false">Plánované</button>
-            <button type="button" data-filter="today" aria-pressed="false">Na dnes</button>
+            <button type="button" data-filter="active" aria-pressed="false">Nesplnené</button>
             <button type="button" data-filter="done" aria-pressed="false">Splnené</button>
           </div>
-          <label for="sort">Triediť podľa</label>
-          <select id="sort" aria-label="Triediť podľa">
-            <option value="created">Pridania</option>
-            <option value="due">Termínu</option>
-          </select>
           <button id="exportBtn" class="btn" type="button">Export JSON</button>
           <label class="btn" for="importFile" role="button" tabindex="0">Import JSON</label>
           <input id="importFile" type="file" accept="application/json" hidden />
@@ -72,10 +65,9 @@
       <button id="undoBtn" class="btn small" type="button">Späť</button>
     </div>
 
-    <button id="backToTop" class="back-to-top" aria-label="Späť na vrch" hidden>▲</button>
+    <button id="backToTop" class="back-to-top" aria-label="Späť na vrch" hidden>↑</button>
 
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/todo.js"></script>
   </body>
   </html>
-

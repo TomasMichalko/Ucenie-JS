@@ -1,7 +1,7 @@
-// To‑Do app: localStorage CRUD, filters (all/active/done), sort by created, undo
+// To‑Do app: localStorage CRUD, filters (all/active/done), date range, sort by date/priority, undo
 (function(){
   const KEY = 'todo_tasks_v1';
-  /** @typedef {{id:string,title:string,note:string,done:boolean,createdAt:number}} Task */
+  /** @typedef {{id:string,title:string,note:string,priority:'low'|'medium'|'high',done:boolean,createdAt:number}} Task */
   /** @type {Task[]} */
   let tasks = [];
   let filter = 'all'; // all | active | done
@@ -18,6 +18,9 @@
     undo: document.getElementById('undoBtn'),
     exportBtn: document.getElementById('exportBtn'),
     importFile: document.getElementById('importFile'),
+    from: document.getElementById('fromDate'),
+    to: document.getElementById('toDate'),
+    sort: document.getElementById('sort'),
   };
 
   function load(){
@@ -28,6 +31,7 @@
         id: t.id,
         title: t.title,
         note: t.note || '',
+        priority: (t.priority==='low'||t.priority==='high'||t.priority==='medium') ? t.priority : 'medium',
         done: !!t.done,
         createdAt: t.createdAt || Date.now()
       })) : [];
@@ -40,7 +44,16 @@
   function applyFilterAndSort(list){
     let out = list.slice();
     out = out.filter(t => filter === 'done' ? t.done : (filter === 'active' ? !t.done : true));
-    out.sort((a,b) => a.createdAt - b.createdAt);
+    const fromVal = els.from && els.from.value ? new Date(els.from.value+'T00:00:00').getTime() : -Infinity;
+    const toVal = els.to && els.to.value ? new Date(els.to.value+'T23:59:59.999').getTime() : Infinity;
+    out = out.filter(t => t.createdAt >= fromVal && t.createdAt <= toVal);
+    const sortBy = els.sort ? els.sort.value : 'created';
+    if(sortBy === 'priority'){
+      const rank = {high:0, medium:1, low:2};
+      out.sort((a,b) => (rank[a.priority]-rank[b.priority]) || (a.createdAt - b.createdAt));
+    }else{
+      out.sort((a,b) => a.createdAt - b.createdAt);
+    }
     return out;
   }
 
@@ -62,6 +75,7 @@
     els.empty.hidden = data.length !== 0;
     els.list.innerHTML = data.map(t => `
       <div class="task-card" role="listitem" data-id="${t.id}">
+        <div class="priority-tag priority-${t.priority}">Priorita: ${t.priority==='high'?'Vysoká':(t.priority==='low'?'Nízka':'Stredná')}</div>
         <div>
           <div><strong>${escapeHTML(t.title)}</strong></div>
           <div class="task-meta">
@@ -71,7 +85,7 @@
           </div>
         </div>
         <div class="task-actions">
-          <button class="btn small" data-action="toggle" aria-label="Označiť ako splnené">${t.done ? 'Odznačiť' : 'Splnené'}</button>
+          <button class="btn small" data-action="toggle" aria-label="Označiť ako ${t.done?'nesplnené':'splnené'}">${t.done ? 'Označiť ako nesplnené' : 'Označiť ako splnené'}</button>
           <button class="btn small" data-action="delete" aria-label="Zmazať">Zmazať</button>
         </div>
       </div>
@@ -84,16 +98,13 @@
     e.preventDefault();
     const title = els.title.value.trim();
     const note = els.note.value.trim();
-
     if(!title){
       els.title.setCustomValidity('Názov je povinný');
       els.title.reportValidity();
       return;
-    }else{
-      els.title.setCustomValidity('');
-    }
-
-    const t = { id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()+Math.random()), title, note, done:false, createdAt: Date.now() };
+    }else{ els.title.setCustomValidity(''); }
+    const prio = (document.querySelector('input[name="priority"]:checked')?.value)||'medium';
+    const t = { id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()+Math.random()), title, note, priority: prio, done:false, createdAt: Date.now() };
     tasks.push(t);
     save();
     els.form.reset();
@@ -138,7 +149,6 @@
     document.querySelectorAll('.segmented button').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.filter===filter)));
     render();
   }
-
   function onFilterClick(e){
     const btn = e.target.closest('button[data-filter]');
     if(!btn) return;
@@ -154,7 +164,6 @@
     document.body.appendChild(a); a.click(); a.remove();
     URL.revokeObjectURL(url);
   }
-
   function importJSON(ev){
     const file = ev.target.files && ev.target.files[0];
     if(!file) return;
@@ -178,6 +187,9 @@
     els.form.addEventListener('submit', addTask);
     els.list.addEventListener('click', onListClick);
     document.querySelector('.segmented')?.addEventListener('click', onFilterClick);
+    els.from?.addEventListener('change', () => render());
+    els.to?.addEventListener('change', () => render());
+    els.sort?.addEventListener('change', () => render());
     els.exportBtn.addEventListener('click', exportJSON);
     els.importFile.addEventListener('change', importJSON);
     els.undo.addEventListener('click', undo);

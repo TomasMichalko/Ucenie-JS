@@ -31,6 +31,13 @@
         <form id="taskForm" class="task-form" aria-describedby="formHelp">
           <input id="title" name="title" type="text" placeholder="Názov úlohy*" aria-label="Názov úlohy" required />
           <input id="note" name="note" type="text" placeholder="Poznámka (voliteľné)" aria-label="Poznámka" />
+          <fieldset id="priorityGroup" class="priority-group" style="grid-column: 1 / -1; border:0; padding:0; margin:0; display:flex; gap:10px; align-items:center">
+            <legend class="visually-hidden">Priorita</legend>
+            <span>Priorita:</span>
+            <label><input type="radio" name="priority" value="low" /> Nízka</label>
+            <label><input type="radio" name="priority" value="medium" checked /> Stredná</label>
+            <label><input type="radio" name="priority" value="high" /> Vysoká</label>
+          </fieldset>
           <button class="btn primary" type="submit">Pridať</button>
           <div id="formHelp" class="visually-hidden">Názov je povinný.</div>
         </form>
@@ -41,6 +48,15 @@
             <button type="button" data-filter="active" aria-pressed="false">Nesplnené</button>
             <button type="button" data-filter="done" aria-pressed="false">Splnené</button>
           </div>
+          <label for="fromDate">Od</label>
+          <input id="fromDate" type="date" aria-label="Od dátumu" />
+          <label for="toDate">Do</label>
+          <input id="toDate" type="date" aria-label="Do dátumu" />
+          <label for="sort">Zoradiť podľa</label>
+          <select id="sort" aria-label="Zoradiť podľa">
+            <option value="created" selected>Dátumu</option>
+            <option value="priority">Priority</option>
+          </select>
           <button id="exportBtn" class="btn" type="button">Export JSON</button>
           <label class="btn" for="importFile" role="button" tabindex="0">Import JSON</label>
           <input id="importFile" type="file" accept="application/json" hidden />

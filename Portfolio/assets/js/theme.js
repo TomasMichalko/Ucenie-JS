@@ -78,6 +78,12 @@
       if(!nav.querySelector('a[href$="pong.html"]')){
         const a = document.createElement('a'); a.href = 'pong.html'; a.textContent = 'Pong'; nav.appendChild(a);
       }
+
+      // Mobile: hide game links (Snake, Pong)
+      const isMobile = window.matchMedia('(max-width: 600px)').matches;
+      if(isMobile){
+        nav.querySelectorAll('a[href$="snake.html"], a[href$="pong.html"]').forEach(a=>a.remove());
+      }
     }
 
     // Footer year
@@ -97,6 +103,15 @@
 
     // Index page enhancements: hero CTA and contact form
     const isHome = /index\.html$/.test(location.pathname) || location.pathname.endsWith('/') || location.pathname === '';
+    const isMobileView = window.matchMedia('(max-width: 600px)').matches;
+    // If on mobile and visiting games directly, redirect to homepage
+    if(isMobileView){
+      const file = (location.pathname.split('/').pop()||'').toLowerCase();
+      if(file === 'snake.html' || file === 'pong.html'){
+        location.replace('index.html');
+        return;
+      }
+    }
     if(isHome){
       // Update hero buttons: make Contact scroll, add Snake and Pong buttons if missing
       const heroCta = document.querySelector('.hero .cta');

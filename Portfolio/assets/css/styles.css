@@ -379,6 +379,22 @@ body{
   grid-template-columns:1fr}
 }
 
+/* ============ Mobile tweaks (<=600px) ============ */
+@media (max-width: 600px){
+  /* To‑Do form stacks nicely; submit full width at top */
+  .task-form{grid-template-columns:1fr; gap:8px}
+  .task-form button[type="submit"]{grid-column:1; grid-row:auto; justify-self:stretch; height:42px}
+  .priority-group{flex-wrap:wrap}
+  /* Toolbar items wrap and fill width for easier tapping */
+  .toolbar{gap:8px}
+  .toolbar label{align-self:center}
+  .toolbar .segmented{width:100%}
+  .segmented button{flex:1; padding:10px 12px}
+  .toolbar input[type="date"], .toolbar select{flex:1}
+  /* Bigger action buttons on tasks */
+  .task-actions .btn.small{height:40px; padding:0 14px}
+}
+
 /* =======================
    Toâ€‘Do specific
    ======================= */

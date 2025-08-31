@@ -4,8 +4,27 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="Tomáš Michalko" />
+    <meta name="theme-color" content="#0b0f14" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <title>Tomáš Michalko — O mne</title>
     <meta name="description" content="Osobná webová prezentácia — Tomáš Michalko. O mne, To‑Do appka a hry Had a Pong." />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Tomáš Michalko — O mne" />
+    <meta property="og:description" content="Osobná webová prezentácia — Tomáš Michalko. O mne, To‑Do appka a hry Had a Pong." />
+    <!-- TODO: update with final domain URL -->
+    <meta property="og:url" content="" />
+    <!-- <meta property="og:image" content="/assets/og-image.png" /> -->
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tomáš Michalko — O mne" />
+    <meta name="twitter:description" content="Osobná webová prezentácia — Tomáš Michalko. O mne, To‑Do appka a hry Had a Pong." />
+    <!-- <meta name="twitter:image" content="/assets/og-image.png" /> -->
+    <!-- Canonical (set when domain is known) -->
+    <link rel="canonical" href="" />
+    <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
@@ -90,9 +109,10 @@
         <div class="container">
           <h2 id="contact-title">Kontakt</h2>
           <p>Napíš mi a preberieme detaily spolupráce.</p>
-          <form id="contactForm" class="task-form" aria-label="Kontaktný formulár">
+          <form id="contactForm" class="task-form" aria-label="Kontaktný formulár" action="contact.php" method="POST">
             <input id="contactEmail" name="email" type="email" placeholder="Tvoj e‑mail" aria-label="E‑mail" required />
             <textarea id="contactMessage" name="message" placeholder="Správa" aria-label="Správa" rows="3" style="grid-column: 1 / -1; resize:vertical" required></textarea>
+            <input type="text" name="hp" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0" aria-hidden="true" />
             <button class="btn primary" type="submit">Odoslať</button>
           </form>
         </div>

@@ -1,4 +1,4 @@
-// Shared theme + nav helpers + back-to-top
+﻿// Shared theme + nav helpers + back-to-top
 (function(){
   const html = document.documentElement;
   const THEME_KEY = 'theme'; // 'light' | 'dark'
@@ -128,45 +128,6 @@
         if(!heroCta.querySelector('a[href$="pong.html"]')){
           const pongBtn = document.createElement('a');
           pongBtn.className = 'btn ghost';
-          pongBtn.href = 'pong.html';
-          pongBtn.textContent = 'Zahraj si pong';
-          heroCta.appendChild(pongBtn);
-        }
-      }
-
-      // Replace contact CTA with a simple form if not present
-      const contactSection = document.getElementById('kontakt') || document.querySelector('section[aria-labelledby="contact-title"]');
-      if(contactSection){
-        contactSection.id = 'kontakt';
-        const container = contactSection.querySelector('.container') || contactSection;
-        const oldCta = container.querySelector('.cta');
-        if(oldCta){ oldCta.remove(); }
-        if(!container.querySelector('#contactForm')){
-          const form = document.createElement('form');
-          form.id = 'contactForm'; form.className = 'task-form'; form.setAttribute('aria-label','Kontaktný formulár');
-          form.innerHTML = `
-            <input id="contactEmail" name="email" type="email" placeholder="Tvoj e‑mail" aria-label="E‑mail" required />
-            <textarea id="contactMessage" name="message" placeholder="Správa" aria-label="Správa" rows="3" style="grid-column: 1 / -1; resize:vertical" required></textarea>
-            <button class="btn primary" type="submit">Odoslať</button>
-          `;
-          container.appendChild(form);
-        }
-      }
-
-      // Handle contact form submit via mailto
-      const contactForm = document.getElementById('contactForm');
-      if(contactForm){
-        contactForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const email = /** @type {HTMLInputElement} */(document.getElementById('contactEmail')).value.trim();
-          const message = /** @type {HTMLTextAreaElement} */(document.getElementById('contactMessage')).value.trim();
-          if(!email || !message) return;
-          const to = 'tomasmichalko71@gmail.com';
-          const subject = encodeURIComponent('Kontakt z portfólia');
-          const body = encodeURIComponent(`Od: ${email}\n\nSpráva:\n${message}`);
-          window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-        });
-      }
     }
   });
 })();

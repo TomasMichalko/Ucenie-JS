@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="sk" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="Tomáš Michalko" />
+    <meta name="theme-color" content="#0b0f14" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <title>Tomáš Michalko — O mne</title>
+    <meta name="description" content="Osobná webová prezentácia — Tomáš Michalko. O mne, To-Do appka a hry Had a Pong." />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Tomáš Michalko — O mne" />
+    <meta property="og:description" content="Osobná webová prezentácia — Tomáš Michalko. O mne, To-Do appka a hry Had a Pong." />
+    <!-- TODO: update with final domain URL -->
+    <meta property="og:url" content="" />
+    <!-- <meta property="og:image" content="/assets/og-image.png" /> -->
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tomáš Michalko — O mne" />
+    <meta name="twitter:description" content="Osobná webová prezentácia — Tomáš Michalko. O mne, To-Do appka a hry Had a Pong." />
+    <!-- <meta name="twitter:image" content="/assets/og-image.png" /> -->
+    <!-- Canonical (set when domain is known) -->
+    <link rel="canonical" href="" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Preskočiť na obsah</a>
+
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a href="index.html" class="brand" aria-label="Domov">Tomáš Michalko</a>
+        <nav class="nav" aria-label="Hlavná navigácia">
+          <a href="index.html" aria-current="page">O mne</a>
+          <a href="todo.html">To‑Do</a>
+          <a href="snake.html">Had</a>
+          <a href="pong.html">Pong</a>
+        </nav>
+        <button id="theme-toggle" class="toggle" type="button" aria-label="Switch theme" aria-pressed="false"></button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-label="Úvod">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <h1 class="hero-title">Ahoj, volám sa <span class="accent">Tomáš Michalko</span></h1>
+            <p class="lead">Svet sa rýchlo digitalizuje a online prítomnosť je dnes nevyhnutnosťou aj pre menšie firmy či jednotlivcov. Ponúkam tvorbu moderných a prehľadných web stránok, ako aj jednoduchých aplikácií na mieru, ktoré vám pomôžu lepšie osloviť zákazníkov a zviditeľniť sa na internete.</p>
+            <div class="cta">
+              <a class="btn primary" href="#kontakt">Kontaktuj ma</a>
+              <a class="btn ghost" href="todo.html">Pozri To‑Do appku</a>
+              <a class="btn ghost" href="snake.html">Zahraj si hada</a>
+              <a class="btn ghost" href="pong.html">Zahraj si pong</a>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="blob"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="skills-title">
+        <div class="container">
+          <h2 id="skills-title">Zručnosti</h2>
+          <div class="grid cards">
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M3 4h18v16H3z" opacity=".2"/><path fill="currentColor" d="M5 6h14v2H5zm0 4h14v2H5zm0 4h10v2H5z"/></svg>
+              </div>
+              <h3>HTML</h3>
+              <p>Semantika, prístupnosť, správne ARIA atribúty.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M4 4h16v16H4z" opacity=".2"/><path fill="currentColor" d="M7 7h10v2H7zm0 4h10v2H7zm0 4h6v2H7z"/></svg>
+              </div>
+              <h3>CSS</h3>
+              <p>Flex/Grid, prechody, responzivita, focus states.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="9" fill="currentColor" opacity=".2"/><path fill="currentColor" d="M8 8h8v2H8v6h2"/></svg>
+              </div>
+              <h3>JavaScript</h3>
+              <p>ES6+, čistá logika, bez závislostí.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28"><rect x="3" y="5" width="18" height="14" rx="2" fill="currentColor" opacity=".2"/><path fill="currentColor" d="M7 9h10v2H7zm0 4h6v2H7z"/></svg>
+              </div>
+              <h3>LocalStorage</h3>
+              <p>Persistencia údajov v prehliadači.</p>
+            </article>
+            <article class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28"><rect x="4" y="4" width="16" height="16" rx="2" fill="currentColor" opacity=".2"/><path fill="currentColor" d="M8 8h4v4H8zM14 12h4v4h-4z"/></svg>
+              </div>
+              <h3>Canvas</h3>
+              <p>2D kreslenie a jednoduché hry.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="contact-title" id="kontakt">
+        <div class="container">
+          <h2 id="contact-title">Kontakt</h2>
+          <p>Napíš mi a preberieme detaily spolupráce.</p>
+          <form id="contactForm" class="task-form" aria-label="Kontaktný formulár" action="contact.php" method="POST">
+            <input id="contactEmail" name="email" type="email" placeholder="Tvoj e‑mail" aria-label="E‑mail" required />
+            <textarea id="contactMessage" name="message" placeholder="Správa" aria-label="Správa" rows="3" style="grid-column: 1 / -1; resize:vertical" required></textarea>
+            <input type="text" name="hp" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0" aria-hidden="true" />
+            <button class="btn primary" type="submit">Odoslať</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <p>© <span id="year"></span> Tomáš Michalko</p>
+        <p>
+          <a href="https://github.com/TomasMichalko?tab=repositories" aria-label="GitHub profil" target="_blank" rel="noreferrer">GitHub</a>
+        </p>
+      </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" aria-label="Späť na vrch" hidden>↑</button>
+
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/cookies.js"></script>
+  </body>
+  </html>
+

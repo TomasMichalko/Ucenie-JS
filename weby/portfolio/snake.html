@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="sk" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Had — Tomáš Michalko</title>
+    <meta name="description" content="Klasická hra Had v HTML5 canvas s uloženým rekordom." />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Preskočiť na obsah</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html" class="brand">Tomáš Michalko</a>
+        <nav class="nav" aria-label="Hlavná navigácia">
+          <a href="index.html">O mne</a>
+          <a href="todo.html">To‑Do</a>
+          <a href="snake.html" aria-current="page">Had</a>
+          <a href="pong.html">Pong</a>
+        </nav>
+        <button id="theme-toggle" class="toggle" type="button" aria-label="Prepnúť tému" aria-pressed="false">
+          <span class="toggle-thumb" aria-hidden="true"></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main" class="snake-wrap">
+      <div class="container">
+        <h1>Had</h1>
+        <div class="panel" role="group" aria-label="Ovládanie hry">
+          <button id="newGame" class="btn primary" type="button">Nová hra</button>
+          <button id="pause" class="btn" type="button" aria-pressed="false">Pauza</button>
+          <label for="speed">Rýchlosť</label>
+          <select id="speed" aria-label="Rýchlosť">
+            <option value="140">Pomalá</option>
+            <option value="100" selected>Normálna</option>
+            <option value="70">Rýchla</option>
+          </select>
+          <label for="grid">Mriežka</label>
+          <select id="grid" aria-label="Veľkosť mriežky">
+            <option value="16">16×16</option>
+            <option value="20" selected>20×20</option>
+            <option value="24">24×24</option>
+          </select>
+        </div>
+
+        <div class="game-layout">
+          <div class="canvas-wrap">
+            <canvas id="board" width="360" height="360" aria-label="Hracia plocha" tabindex="0"></canvas>
+          </div>
+          <aside class="game-side">
+            <div class="status" aria-live="polite" aria-atomic="true">
+              Skóre: <span id="score">0</span> • Rekord: <span id="high">0</span>
+            </div>
+            <div class="help">
+              Ovládanie: šípky na klávesnici. Prehra pri náraze do steny alebo do seba.
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Tomáš Michalko</p>
+      </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" aria-label="Späť na vrch" hidden>↑</button>
+
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/cookies.js"></script>
+    <script src="assets/js/snake.js"></script>
+  </body>
+  </html>
